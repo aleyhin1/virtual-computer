@@ -3,6 +3,8 @@
 
 #include "bits.h"
 
-bool multiplexer_bits8(Bit8 in, Bit3 con);
+bool multiplexer_bits8(Bit8 in, Bit3 sel);
+
+Bit8 decoder_bit8(Bit3 in);
 
 #endif

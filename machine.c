@@ -3,24 +3,22 @@
 
 int main()
 {
-    Bit8 D;
-    D.bit0 = 1;
-    D.bit1 = 0;
-    D.bit2 = 1;
-    D.bit3 = 1;
-    D.bit4 = 0;
-    D.bit5 = 0;
-    D.bit6 = 1;
-    D.bit7 = 0;
+    Bit3 sel;
+    sel.bit0 = 0;
+    sel.bit1 = 1;
+    sel.bit2 = 1;
 
-    Bit3 C;
-    C.bit0 = 0;
-    C.bit1 = 0;
-    C.bit2 = 0;
+    Bit8 out;
+    out = decoder_bit8(sel);
 
-    bool R = multiplexer_bits8(D, C);
-
-    printf("%d\n", R);
+    printf("%d\n", out.bit0);
+    printf("%d\n", out.bit1);
+    printf("%d\n", out.bit2);
+    printf("%d\n", out.bit3);
+    printf("%d\n", out.bit4);
+    printf("%d\n", out.bit5);
+    printf("%d\n", out.bit6);
+    printf("%d\n", out.bit7);
     
     return 0;
 }
