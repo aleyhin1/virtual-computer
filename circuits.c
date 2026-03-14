@@ -211,3 +211,19 @@ Bit2 bit1_full_adder(bool a, bool b, bool carry)
     return out;
 }
 
+Bit2 bit1_ALU(bool inva, bool a, bool ena, bool b, bool enb, bool carry, Bit2 sel)
+{
+    Bit4 c = bit2_decoder(sel);
+    bool ina = (a && ena) ^ inva;
+    bool inb = b && enb;
+
+    bool out0 = ina && inb;
+    bool out1 = ina || inb;
+    bool out2 = !inb;
+    Bit2 out3 = bit1_full_adder(ina, inb, carry);
+
+    Bit2 out;
+    out.bit0 = c.bit0 && out0 || c.bit1 && out1 || c.bit2 && out2 || c.bit3 && out3.bit0;
+    out.bit1 = out3.bit1 && c.bit3;
+    return out;
+}
